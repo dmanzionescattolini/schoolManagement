@@ -24,5 +24,6 @@ public class Course {
     private String courseName;
 
     @Column(name="instructor_id")
+
     private Integer instructorId;
 }

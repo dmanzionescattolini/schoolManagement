@@ -31,7 +31,7 @@ public class Student {
     @NotNull
     private String studentEmail;
 
-    @JoinTable(name = "Student_courses",
+    @JoinTable(name = "Student_course",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     @ManyToMany

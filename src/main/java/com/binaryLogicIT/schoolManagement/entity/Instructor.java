@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,10 +29,10 @@ public class Instructor {
     @Column(name="instructor_name")
     private String instructorName;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "instructor_id")
+    private Set<Course> courses = new LinkedHashSet<>();
 
 
-    @Transient
-    @OneToMany
-    private List<Course> courses;
 
 }
