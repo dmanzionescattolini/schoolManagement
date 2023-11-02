@@ -5,7 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+//import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import java.io.Serializable;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -13,17 +18,23 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @Table(name = "course")
 @NoArgsConstructor
 @AllArgsConstructor
-@RepositoryRestResource
-public class Course {
+
+public class Course implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "course_id", nullable = false)
-    private Integer id;
+    private Integer courseId;
 
     @Column(name="course_name")
     private String courseName;
 
-    @Column(name="instructor_id")
 
-    private Integer instructorId;
+    @ManyToOne
+    @JoinColumn(name = "instructor_instructor_id")
+    private Instructor instructor;
+    @OneToMany(mappedBy = "course")
+     @Column(name="students_registered")
+    Set<StudentCourse> studentsRegistered;
+
+
 }

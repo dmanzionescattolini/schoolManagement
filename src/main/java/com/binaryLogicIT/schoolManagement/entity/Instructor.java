@@ -6,8 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+//import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,21 +19,19 @@ import java.util.Set;
 @Table(name = "instructor")
 @NoArgsConstructor
 @AllArgsConstructor
-@RepositoryRestResource
-public class Instructor {
+
+public class Instructor implements
+        Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "instructor_id", nullable = false)
     private Integer instructorId;
 
-    @NotNull
     @Column(name="instructor_name")
     private String instructorName;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "instructor_id")
-    private Set<Course> courses = new LinkedHashSet<>();
+    
 
-
+    
 
 }
