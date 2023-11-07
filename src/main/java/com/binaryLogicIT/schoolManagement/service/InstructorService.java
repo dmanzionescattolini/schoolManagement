@@ -18,10 +18,11 @@ public class InstructorService {
 
     @Autowired
     CourseRepository courseRepository;
-    public List<InstructorDto> getAllInstructors(){
-        List<Instructor> instructors =  instructorRepository.findAll();
+
+    public List<InstructorDto> getAllInstructors() {
+        List<Instructor> instructors = instructorRepository.findAll();
         List<InstructorDto> instructorDTOS = new ArrayList<>();
-        instructors.forEach(inst->{
+        instructors.forEach(inst -> {
             InstructorDto instructorDTO = new InstructorDto();
             instructorDTO.setInstructorName(inst.getInstructorName());
 

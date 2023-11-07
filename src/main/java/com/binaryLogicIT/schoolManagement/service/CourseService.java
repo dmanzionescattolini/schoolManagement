@@ -19,14 +19,15 @@ public class CourseService {
     StudentRepository studentRepository;
     @Autowired
     StudentCourseRepository studentCourseRepository;
-    public List<CourseDto> getAllCourses(){
+
+    public List<CourseDto> getAllCourses() {
         List<Course> courses = courseRepository.findAll();
         List<CourseDto> courseDtos = new ArrayList<>();
-        courses.forEach(course->{
+        courses.forEach(course -> {
             CourseDto courseDto = new CourseDto();
             courseDto.setCourseName(course.getCourseName());
             courseDto.setInstructor(course.getInstructor().getInstructorName());
-            List<String> students = studentCourseRepository.findAllByCourseCourseId(course.getCourseId()).stream().map(registration->studentRepository.findById(registration.getStudent().getStudentId()).orElseThrow().toString()).toList();
+            List<String> students = studentCourseRepository.findAllByCourseCourseId(course.getCourseId()).stream().map(registration -> studentRepository.findById(registration.getStudent().getStudentId()).orElseThrow().toString()).toList();
             courseDto.setStudents(students);
             courseDtos.add(courseDto);
         });

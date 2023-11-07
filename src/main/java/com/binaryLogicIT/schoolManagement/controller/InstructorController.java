@@ -18,9 +18,9 @@ public class InstructorController {
     @Autowired
     InstructorService instructorService;
 
-    @GetMapping({"/",""})
+    @GetMapping({"/", ""})
     @CrossOrigin("*")
-    public ResponseEntity<List<InstructorDto>> getAllInstructors(){
+    public ResponseEntity<List<InstructorDto>> getAllInstructors() {
         return ResponseEntity.ok(instructorService.getAllInstructors());
     }
 

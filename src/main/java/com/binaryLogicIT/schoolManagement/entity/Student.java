@@ -3,12 +3,12 @@ package com.binaryLogicIT.schoolManagement.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
-//import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -17,28 +17,27 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Student implements Serializable {
+public class Student   {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "student_id", nullable = false)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @OneToMany(mappedBy = "student")
+    @Column(name = "courses")
+    Set<StudentCourse> courses;
+
     private Integer studentId;
-
     @NotNull
-@Column(name="student_name")
+    @Column(name = "student_name")
     private String studentName;
-
     @NotNull
-    @Column(name="student_last_name")
+    @Column(name = "student_last_name")
     private String studentLastName;
-
     @Email
     @NotNull
     @Column(name = "student_email")
     private String studentEmail;
-
-    @OneToMany(mappedBy = "student")
-            @Column(name="courses")
-    Set<StudentCourse> courses;
 
     @Override
     public String toString() {

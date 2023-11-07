@@ -1,6 +1,5 @@
 package com.binaryLogicIT.schoolManagement.dto;
 
-import com.binaryLogicIT.schoolManagement.entity.Student;
 import lombok.Data;
 
 import java.util.List;

@@ -1,7 +1,5 @@
 package com.binaryLogicIT.schoolManagement.entity;
 
-import com.binaryLogicIT.schoolManagement.entity.Course;
-import com.binaryLogicIT.schoolManagement.entity.Student;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
